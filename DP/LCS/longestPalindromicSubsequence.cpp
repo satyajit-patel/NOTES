@@ -1,25 +1,32 @@
-// https://leetcode.com/problems/longest-palindromic-subsequence/submissions/
+// https://leetcode.com/problems/longest-palindromic-subsequence/description/
 class Solution {
 public:
-    int f(int i, int j, string& s1, string& s2, vector<vector<int>>& dp) {
+    int f(string& s1, string& s2, vector<vector<int>>& dp, int i=0, int j=0) {
         // base case
-        if(i == s1.size() || j == s2.size()) return 0;
+        if(i == s1.size()) return 0;
+        if(j == s2.size()) return 0;
         if(dp[i][j] != -1) return dp[i][j];
 
-        if(s1[i] == s2[j]) return dp[i][j] = 1 + f(i+1, j+1, s1, s2, dp);
-        else {
-            int opr1 = f(i+1, j, s1, s2, dp);
-            int opr2 = f(i, j+1, s1, s2, dp);
-            return dp[i][j] = std::max(opr1, opr2);
+        int ans = 0;
+        if(s1[i] == s2[j]) {
+            ans += 1 + f(s1, s2, dp, i+1, j+1);
         }
+        else {
+            int opr1 = f(s1, s2, dp, i+1, j);
+            int opr2 = f(s1, s2, dp, i, j+1);
+            ans += std::max(opr1, opr2);
+        }
+
+        dp[i][j] = ans;
+        return ans;
     }
     int longestCommonSubsequence(string& text1, string& text2) {
         vector<vector<int>> dp(text1.size()+1, vector<int>(text2.size()+1, -1));
-        return f(0, 0, text1, text2, dp);
+        return f(text1, text2, dp);
     }
     int longestPalindromeSubseq(string s) {
         string temp = s;
         std::reverse(temp.begin(), temp.end());
-        return longestCommonSubsequence(s, temp);
+        return longestCommonSubsequence(temp, s);
     }
 };

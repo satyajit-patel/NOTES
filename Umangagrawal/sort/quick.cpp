@@ -1,14 +1,37 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-void swap(int *a, int *b)
-{
-    int t;
-    t=*a;
-    *a=*b;
-    *b=t;
 
+// pulkit's code
+int partition(vi &arr, int l, int r)
+{
+	int id = rng() % (r - l + 1) + l;
+	swap(arr[r], arr[id]);
+
+	int i = l;
+
+	for (int j = l; j <= r; ++j)
+		if (arr[j] <= arr[r])
+			swap(arr[i], arr[j]), i++;
+
+	return i - 1;
 }
+
+void quick_sort(vi &arr, int l, int r)
+{
+	if (l >= r)
+		return;
+
+	int p_i = partition(arr, l, r);
+	quick_sort(arr, l, p_i - 1);
+	quick_sort(arr, p_i + 1, r);
+}
+
+
+
+
+
+
 int partition(int arr[], int low, int high)
 {
     int pivot= arr[low], i=low, j=high;

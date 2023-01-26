@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+#define log(args...)    { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
+#define logarr(arr,a,b) for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;
+void err(istream_iterator<string> it) {}
+template<typename T, typename... Args>
+void err(istream_iterator<string> it, T a, Args... args) {
+    cout << *it << " = " << a << endl;
+    err(++it, args...);
+}
+
+
+
+
+#define     IOS     ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define     endl    "\n" 
+#define     int     long long int
+#define     vi      vector<int>
+#define     vvi     vector<vector<int>>
+#define     vvc     vector<vector<char>>
+#define     vpi     vector<pair<int, int>>
+#define     M       (int)1e9+7
+
+//---------------------------------------------------------------------
+
+// given a array add x from L to R only
+
+void input() {
+
+    // i/p : 0 0 0 0 0 0 0 0 0 0
+    // 0/p : 0 2 2 2 2 2 0 0 0 0
+
+    vi arr(10, 0);
+    int Q; cin>>Q;
+    while(Q--) {
+        int L,R,X; cin>>L>>R>>X;
+        arr[L] += X;
+        arr[R+1] -= X; // like +/- cancel ie after that range it will be back to normal
+    }
+    for(int i=1; i<arr.size(); i++) {
+        // just a prefixSum array
+        arr[i] += arr[i-1];
+    }
+    logarr(arr, 0, arr.size()-1);
+}
+
+//------------------------------------------------------------------------
+signed main() {
+    IOS
+    input();
+    return 0;
+}
+
