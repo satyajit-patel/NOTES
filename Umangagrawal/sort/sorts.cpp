@@ -32,6 +32,7 @@ void selectionSort(vector<int> arr) {
     }
     cout<<swaps<<endl;
 }
+
 void bubbleSort(vector<int> arr) {
     // big element gets position first at back
     for(auto &it : arr) cout<<it<<" ";
@@ -51,27 +52,32 @@ void bubbleSort(vector<int> arr) {
     }
     cout<<swaps<<endl;
 }
+
 void insertionSort(vector<int> arr) {
+    // keep picking 1 card at a time and place it in it's appropriate position
     for(auto &it : arr) cout<<it<<" ";
     cout<<endl;
 
-    for(int i=1; i<arr.size(); i++) {
-        int j    = i - 1;
-        int card = arr[i];
-        while (j>=0 && arr[j]>card) {
-            arr[j+1] = arr[j];
+    int swaps = 0;
+    for(int i=0; i<arr.size(); i++) {
+        int j = i;
+        while (j>0 && arr[j] < arr[j-1]) {
+            std::swap(arr[j], arr[j-1]);
+            swaps++;
             j--;
         }
-        arr[j+1] = card;
 
         for(auto &it : arr) cout<<it<<" ";
         cout<<endl;   
     }
+    cout<<swaps<<endl;
 }
+
 void input() {
     int n; cin>>n;
     vector<int> arr(n);
     for(auto &it : arr) cin>>it;
+    
     selectionSort(arr);
     cout<<endl;
     bubbleSort(arr);
