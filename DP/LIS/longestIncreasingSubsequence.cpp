@@ -18,6 +18,10 @@ public:
         return ans;
     }
     int lengthOfLIS(vector<int>& nums) {
+        /* 
+            1 <= nums.length <= 2500
+            -104 <= nums[i] <= 104
+        */
         vector<vector<int>> dp(nums.size()+1, vector<int>(1e4+1, -1));
         return f(nums, dp);
     }
