@@ -1,4 +1,7 @@
 // https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+// knapsack sign : atleast 1 array and a Capacity is given
+
 class Solution {
 public:
     int f(int W, int* wt, int* val, int n, vector<vector<int>>& dp, int i=0) {

@@ -11,7 +11,8 @@ int lcs(string s1, string s2, int i, int j, int n, int m, vii &dp) {
 	int notMatch = 0;
 	if(s1[i] == s2[j]) match = 1 + lcs(s1, s2, i+1, j+1, n, m, dp);
 	else notMatch = max(lcs(s1,s2,i+1,j,n,m,dp), lcs(s1,s2,i,j+1,n,m,dp));
-	return dp[i][j] = max(match, notMatch);
+	// return dp[i][j] = max(match, notMatch);
+	return dp[i][j] = match + notMatch;
 }
 int main() {
 	string s1,s2; cin>>s1>>s2;
