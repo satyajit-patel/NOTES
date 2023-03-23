@@ -20,7 +20,7 @@ vi floydWarshall(int n, vpi adj[]) {
     for (int k=1; k<=n; k++) {//k is no of phases
         for (int i=1; i<=n; i++) {
             for (int j=1; j<=n; j++) {
-                if(dist[i][k] != INF and dist[k][j] != INF)
+                if(dist[i][k] != INF and dist[k][j] != INF) // take only reachable ones
                     dist[i][j]=min(dist[i][j], dist[i][k] + dist[k][j]);
             }
         }
