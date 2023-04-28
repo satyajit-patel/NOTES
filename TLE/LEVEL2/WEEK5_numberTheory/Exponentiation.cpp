@@ -21,6 +21,22 @@ int my_pow(int base, int power, int mod) {
     return ans;
 }
 
+int my_pow(int base, int power) {
+    int ans = 1;
+    while(power) {
+        if(power&1) ans = ((ans%MOD)*(base%MOD))%MOD;
+        base = ((base%MOD)*(base%MOD))%MOD;
+        power >>= 1;
+    }
+    return ans;
+}
+
+int fast_expo(int base, int power) {
+	if (!power) return 1;
+	int ans = fast_expo(base, power/2);
+	return (power&1) ? ((ans%MOD)*(ans%MOD)*(base%MOD))%MOD : ((ans%MOD)*(ans%MOD))%MOD;
+}
+
 void input() {
     int n; cin>>n;
     while(n--) {

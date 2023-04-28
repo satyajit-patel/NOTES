@@ -21,7 +21,6 @@ void f(int i, std::string& s, std::string& output) { // pass by reference
     // include
     output.push_back(s[i]);
     f(i+1, s, output);
-
     // backtrack
     output.pop_back();
 
