@@ -19,6 +19,9 @@ public:
         int nv = getParent(v);
         if(nu == nv) return;
         if(size[nu] < size[nv]) {
+	// smaller going to attached to bigger
+	// so nu got attached to nv
+	// so size of nv got increased by size of nu
             parent[nu] = nv;
             size[nv] += size[nu];
         }

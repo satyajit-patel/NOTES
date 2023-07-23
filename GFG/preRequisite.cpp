@@ -20,6 +20,20 @@ void str() {
         cout<<word<<" ";
     }
     cout<<"\n";
+
+
+    /*
+    // ["one.two.three","four.five","six"] => ["one","two","three","four","five","six"]
+    vector<string> splitWordsBySeparator(vector<string>& words, char separator) {
+        vector<string> ans;
+        for(auto& it:words) {
+            std::stringstream ss(it);
+            for(std::string word; std::getline(ss, word, separator);) if(!word.empty()) ans.push_back(word);
+        }
+        return ans;
+    }
+    */
+};
 }
 bool cmp2(pair<int, int> p1, pair<int, int> p2) {
     if(p1.second < p2.second) return true;
